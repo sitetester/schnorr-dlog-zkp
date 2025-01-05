@@ -44,7 +44,7 @@ impl DLogProof {
     ///
     /// # Arguments
     /// * `sid` - Session identifier for domain separation
-    /// * `pid` - Participant ID for uniqueness. Used to distinguish different proofs
+    /// * `pid` - Participant ID for uniqueness to distinguish different proofs
     /// * `points` - Sequence of points to be included in the challenge generation
     ///
     /// # Returns
@@ -78,7 +78,7 @@ impl DLogProof {
     ///
     /// # Arguments
     /// * `sid` - Session identifier string used for domain separation
-    /// * `pid` - Participant ID for uniqueness. Used to distinguish different proofs
+    /// * `pid` - Participant ID for uniqueness to distinguish different proofs
     /// * `x` - The secret scalar (private key) that we're proving knowledge of
     /// * `y` - The public point, must satisfy y = x * G
     /// * `base_point` - Base point of secp256k1 curve
@@ -119,7 +119,7 @@ impl DLogProof {
     /// Verifies a Schnorr Zero-Knowledge Proof
     ///
     /// This function verifies that the prover knows a secret value 'x' but the secret itself is
-    /// never revealed during the validation process.
+    /// never revealed during the verification process.
     ///
     /// The verification uses only public information & the proof values (t, s) provided by the prover.
     /// It checks if the proof satisfies the equation: s * G = t + c * y
@@ -131,8 +131,8 @@ impl DLogProof {
     /// * `base_point` - Base point of secp256k1 curve
     ///
     /// # Returns
-    /// * `Ok(bool)` -Validity of proof, indicating whether the prover knows the secret value x
-    /// * `Err(String)` - If challenge computation fails during verification
+    /// * `Ok(bool)` - Validity of proof, indicating whether the prover knows the secret value x
+    /// * `Err(String)` - Any error during verification
     pub fn verify(
         &self,
         sid: &str,

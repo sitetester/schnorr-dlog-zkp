@@ -95,10 +95,10 @@ fn print_proof_in_multiple_formats(proof: &DLogProof) {
     let s_bytes = proof.s.to_bytes();
     println!("s: 0x{}", hex::encode(s_bytes));
 
-    print_proof_json(proof);
+    in_json(proof);
 }
 
-fn print_proof_json(proof: &DLogProof) {
+fn in_json(proof: &DLogProof) {
     println!("-----JSON-----");
     // Compressed format - Uses prefix (02=even y, 03=odd y) + x-coordinate
     let json = serde_json::to_string(&proof).expect("JSON serialization failed");
@@ -129,7 +129,7 @@ fn print_proof_json(proof: &DLogProof) {
 
     println!("Uncompressed JSON (with both coordinates):");
 
-    // This line uses serialize_point_hex and serialize_scalar_hex internally
+    // Will utilise Serde `serialize_with` attributes (if any)
     println!(
         "serde_json::to_string: {}",
         serde_json::to_string(&uncompressed_proof).expect("JSON serialization failed")
@@ -139,7 +139,7 @@ fn print_proof_json(proof: &DLogProof) {
         serde_json::to_string_pretty(&uncompressed_proof).expect("JSON serialization failed")
     );
 
-    // This line uses deserialize_point_hex and deserialize_scalar_hex internally
+    // Will utilise Serde `deserialize_with` attributes (if any)
     let parsed_proof: DLogProof = serde_json::from_str(&json).expect("JSON deserialization failed");
     println!("Parsed proof from JSON: \n{:?}", parsed_proof);
 
