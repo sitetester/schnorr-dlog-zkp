@@ -32,7 +32,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Generate a random secret scalar (private key) using OS random number generator
     let x = Scalar::random(&mut OsRng);
-    println!("Random secret: {:#?}", x);
+    println!("Random secret: 0X{}", hex::encode_upper(x.to_bytes()));
 
     // Calculate the public point y = x * G where G is the base point
     let y = base_point * x;

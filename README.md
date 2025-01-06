@@ -3,9 +3,7 @@ A Rust implementation of Non-Interactive Schnorr Zero-Knowledge Discrete Logarit
 
 Example program output:
 ```
-Random secret: Scalar(
-    Uint(0xD04590CABB409190691488F2A7A1AAA1835CF952DA03C87B9B83F68AAC8588F7),
-)
+Random secret: 0XEF5BEF789DE17759AC2293382D4D2D2DBB5D220F98BF99DF15D9FA61BCC7D778
 Proof computation time: 1 ms
 Verify computation time: 2 ms
 ✅ DLOG proof is correct
